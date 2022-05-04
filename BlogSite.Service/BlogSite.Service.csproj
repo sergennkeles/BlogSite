@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BlogSite.WebAPI\BlogSite.WebAPI.csproj" />
+    <ProjectReference Include="..\BlogSite.Repository\BlogSite.Repository.csproj" />
   </ItemGroup>
 
 </Project>
