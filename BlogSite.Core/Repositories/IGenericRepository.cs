@@ -12,7 +12,7 @@ namespace BlogSite.Core.Repositories
     {
         IQueryable<TEntity> GetAll();
         IQueryable<TEntity> FindBy(Expression<Func<TEntity, bool>> predicate);
-        Task<TEntity> GetByIdAsync(Guid id);
+        Task<TEntity> GetByIdAsync(int id);
         Task AddAsync(TEntity entity);
         void Update(TEntity entity);
         void Delete(TEntity entity);

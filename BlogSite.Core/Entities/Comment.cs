@@ -8,9 +8,11 @@ namespace BlogSite.Core.Entities
 {
     public class Comment:BaseEntity
     {
-        public Guid UserId { get; set; }
-        public Guid PostId { get; set; }
+        public int UserId { get; set; }
+        public int PostId { get; set; }
         public string CommentContent { get; set; }
-        
+
+        public virtual User User { get; set; }
+
     }
 }

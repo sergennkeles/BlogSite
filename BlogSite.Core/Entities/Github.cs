@@ -8,9 +8,10 @@ namespace BlogSite.Core.Entities
 {
     public class Github : BaseEntity
     {
-        public Guid UserId { get; set; }
+        public int UserId { get; set; }
         public string GithubUrl { get; set; }
-     
+        public virtual User User { get; set; }
+
     }
-   
+
 }

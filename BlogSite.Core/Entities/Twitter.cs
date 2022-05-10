@@ -8,7 +8,9 @@ namespace BlogSite.Core.Entities
 {
     public class Twitter:BaseEntity
     {
-        public Guid UserId { get; set; }
+        public int UserId { get; set; }
         public string TwitterUrl { get; set; }
+        public virtual User User { get; set; }
+
     }
 }

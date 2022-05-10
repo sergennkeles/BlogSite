@@ -12,6 +12,17 @@ namespace BlogSite.Core.Entities
         public string LastName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
-         
+
+        public ICollection<Post>  Posts { get; set; }
+        public ICollection<Comment> Comments { get; set; }
+
+        public Facebook Facebook { get; set; }
+        public Twitter Twitter { get; set; }
+        public Github Github { get; set; }
+        public Instagram Instagram { get; set; }
+        public ICollection<Favorite> Favorites { get; set; }
+        
+
+
     }
 }

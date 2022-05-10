@@ -8,7 +8,9 @@ namespace BlogSite.Core.Entities
 {
     public class Instagram:BaseEntity
     {
-        public Guid UserId { get; set; }
+        public int UserId { get; set; }
         public string InstagramUrl { get; set; }
+        public virtual User User { get; set; }
+
     }
 }
