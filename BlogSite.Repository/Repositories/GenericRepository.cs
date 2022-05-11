@@ -14,42 +14,42 @@ namespace BlogSite.Repository.Repositories
     {
 
         protected readonly AppDbContext _context;
-        private readonly DbSet<T> _dbSet;
+ 
 
-        public GenericRepository(AppDbContext context, DbSet<T> dbSet)
+        public GenericRepository(AppDbContext context)
         {
             _context = context;
-            _dbSet = _context.Set<T>();
+      
         }
 
         public async Task AddAsync(T entity)
         {
-            await _dbSet.AddAsync(entity);
+            await _context.AddAsync(entity);
         }
 
         public void Delete(T entity)
         {
-            _dbSet.Remove(entity);
+            _context.Remove(entity);
         }
 
         public IQueryable<T> FindBy(Expression<Func<T, bool>> predicate)
         {
-            return _dbSet.Where(predicate);
+            return _context.Set<T>().Where(predicate);
         }
 
         public IQueryable<T> GetAll()
         {
-            return _dbSet.AsNoTracking().AsQueryable();
+            return _context.Set<T>().AsNoTracking().AsQueryable();
         }
 
         public async Task<T> GetByIdAsync(int id)
         {
-           return await _dbSet.FindAsync(id);
+           return await _context.Set<T>().FindAsync(id);
         }
 
         public void Update(T entity)
         {
-            _dbSet.Update(entity);
+            _context.Update(entity);
         }
     }
 }

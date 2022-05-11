@@ -1,3 +1,5 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
 using BlogSite.Core.Repositories;
 using BlogSite.Core.Services;
 using BlogSite.Core.UnitOfWorks;
@@ -6,6 +8,7 @@ using BlogSite.Repository.Repositories;
 using BlogSite.Repository.UnitOfWorks;
 using BlogSite.Service.Mapping;
 using BlogSite.Service.Repositories;
+using BlogSite.WebAPI.Modules;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -28,29 +31,33 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped(typeof(IService<>), typeof(Service<>));
 
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IUserService, UserService>();
+//builder.Services.AddTransient<IUserRepository, UserRepository>();
+//builder.Services.AddTransient<IUserService, UserService>();
 
-builder.Services.AddScoped<ITwitterRepository, TwitterRepository>();
-builder.Services.AddScoped<ITwitterService, TwitterService>();
+//builder.Services.AddTransient<ITwitterRepository, TwitterRepository>();
+//builder.Services.AddTransient<ITwitterService, TwitterService>();
 
-builder.Services.AddScoped<IPostRepository, PostRepository>();
-builder.Services.AddScoped<IPostService, PostService>();
+//builder.Services.AddTransient<IPostRepository, PostRepository>();
+//builder.Services.AddTransient<IPostService, PostService>();
 
-builder.Services.AddScoped<IInstagramRepository, InstagramRepository>();
-builder.Services.AddScoped<IInstagramService, InstagramService>();
+//builder.Services.AddTransient<IInstagramRepository, InstagramRepository>();
+//builder.Services.AddTransient<IInstagramService, InstagramService>();
 
-builder.Services.AddScoped<IGithubRepository,GithubRepository>();
-builder.Services.AddScoped<IGithubService, GithubService>();
+//builder.Services.AddTransient<IGithubRepository, GithubRepository>();
+//builder.Services.AddTransient<IGithubService, GithubService>();
 
-builder.Services.AddScoped<IFavoriteRepository, FavoriteRepository>();
-builder.Services.AddScoped<IFavoriteService, FavoriteService>();
+//builder.Services.AddTransient<IFavoriteRepository, FavoriteRepository>();
+//builder.Services.AddTransient<IFavoriteService, FavoriteService>();
 
-builder.Services.AddScoped<IFacebookRepository, FacebookRepository>();
-builder.Services.AddScoped<IFacebookService, FacebookService>();
+//builder.Services.AddTransient<IFacebookRepository, FacebookRepository>();
+//builder.Services.AddTransient<IFacebookService, FacebookService>();
 
-builder.Services.AddScoped<ICommentRepository, CommentRepository>();
-builder.Services.AddScoped<ICommentService, CommentService>();
+//builder.Services.AddTransient<ICommentRepository, CommentRepository>();
+//builder.Services.AddTransient<ICommentService, CommentService>();
+
+builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
+builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder => containerBuilder.RegisterModule(new RepoServiceModule()));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

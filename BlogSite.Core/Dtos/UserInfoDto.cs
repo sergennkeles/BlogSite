@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BlogSite.Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace BlogSite.Core.Dtos
         public string Email { get; set; }
         public string Password { get; set; }
 
-        public int FacebookId { get; set; }
+        public Facebook Facebook { get; set; }
         public int TwitterId { get; set; }
         public int GithubId { get; set; }
         public int InstagramId { get; set; }

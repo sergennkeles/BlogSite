@@ -11,7 +11,7 @@ namespace BlogSite.Repository.Repositories
 {
     public class UserRepository : GenericRepository<User>, IUserRepository
     {
-        public UserRepository(AppDbContext context, DbSet<User> dbSet) : base(context, dbSet)
+        public UserRepository(AppDbContext context) : base(context)
         {
         }
     }

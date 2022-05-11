@@ -11,7 +11,7 @@ namespace BlogSite.Repository.Repositories
 {
     public class InstagramRepository : GenericRepository<Instagram>, IInstagramRepository
     {
-        public InstagramRepository(AppDbContext context, DbSet<Instagram> dbSet) : base(context, dbSet)
+        public InstagramRepository(AppDbContext context) : base(context)
         {
         }
     }

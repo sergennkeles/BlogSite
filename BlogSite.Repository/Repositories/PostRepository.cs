@@ -11,7 +11,7 @@ namespace BlogSite.Repository.Repositories
 {
     public class PostRepository : GenericRepository<Post>, IPostRepository
     {
-        public PostRepository(AppDbContext context, DbSet<Post> dbSet) : base(context, dbSet)
+        public PostRepository(AppDbContext context) : base(context)
         {
         }
     }

@@ -11,7 +11,7 @@ namespace BlogSite.Repository.Repositories
 {
     public class FacebookRepository : GenericRepository<Facebook>, IFacebookRepository
     {
-        public FacebookRepository(AppDbContext context, DbSet<Facebook> dbSet) : base(context, dbSet)
+        public FacebookRepository(AppDbContext context) : base(context)
         {
         }
     }

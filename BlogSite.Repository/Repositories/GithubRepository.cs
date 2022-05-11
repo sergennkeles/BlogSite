@@ -11,7 +11,7 @@ namespace BlogSite.Repository.Repositories
 {
     public class GithubRepository : GenericRepository<Github>, IGithubRepository
     {
-        public GithubRepository(AppDbContext context, DbSet<Github> dbSet) : base(context, dbSet)
+        public GithubRepository(AppDbContext context) : base(context)
         {
         }
     }
