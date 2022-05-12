@@ -12,8 +12,15 @@ namespace BlogSite.Service.Repositories
 {
     public class UserService : Service<User>, IUserService
     {
-        public UserService(IUnitOfWork unitOfWork, IGenericRepository<User> genericRepository) : base(unitOfWork, genericRepository)
+        private readonly IUserRepository _userRepository;
+        public UserService(IUnitOfWork unitOfWork, IGenericRepository<User> genericRepository, IUserRepository userRepository) : base(unitOfWork, genericRepository)
         {
+            _userRepository = userRepository;
+        }
+
+        public IEnumerable<User> GetUsersInfoDtoService()
+        {
+            return _userRepository.GetUsersInfoDto();
         }
     }
 }

@@ -13,7 +13,7 @@ namespace BlogSite.Service.Repositories
 {
     public class Service<T> : IService<T> where T : BaseEntity
     {
-        private readonly IUnitOfWork _unitOfWork;
+        protected readonly IUnitOfWork _unitOfWork;
         private readonly IGenericRepository<T> _genericRepository;
 
         public Service(IUnitOfWork unitOfWork,IGenericRepository<T> genericRepository)

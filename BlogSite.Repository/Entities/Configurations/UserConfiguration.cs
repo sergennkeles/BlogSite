@@ -19,6 +19,7 @@ namespace BlogSite.Repository.Entities.Configurations
             builder.Property(x => x.LastName).HasMaxLength(50).IsRequired().HasColumnType("nvarchar");
             builder.Property(x => x.Email).HasMaxLength(50).IsRequired().HasColumnType("nvarchar");
             builder.Property(x => x.Password).HasMaxLength(50).IsRequired().HasColumnType("nvarchar");
+           
 
             builder.ToTable("Users");
 

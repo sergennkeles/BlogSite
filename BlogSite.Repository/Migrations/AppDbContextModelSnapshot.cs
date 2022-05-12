@@ -336,6 +336,9 @@ namespace BlogSite.Repository.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<int>("TwitterId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
@@ -351,7 +354,8 @@ namespace BlogSite.Repository.Migrations
                             Email = "sergen@sergenkeles.com",
                             FirstName = "Sergen",
                             LastName = "Keleş",
-                            Password = "123456"
+                            Password = "123456",
+                            TwitterId = 0
                         });
                 });
 

@@ -14,12 +14,12 @@ namespace BlogSite.Core.Dtos
         public string Email { get; set; }
         public string Password { get; set; }
 
-        public Facebook Facebook { get; set; }
-        public int TwitterId { get; set; }
-        public int GithubId { get; set; }
-        public int InstagramId { get; set; }
-        public int PostId { get; set; }
-        public int CommentId { get; set; }
+        public FacebookDto Facebook { get; set; }
+        public TwitterDto Twitter{ get; set; }
+        public GithubDto Github { get; set; }
+        public InstagramDto Instagram { get; set; }
+        public PostDto Post { get; set; }
+        public CommentDto Comment { get; set; }
         public int FavoriteId { get; set; }
         
 

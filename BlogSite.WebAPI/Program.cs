@@ -11,6 +11,8 @@ using BlogSite.Service.Repositories;
 using BlogSite.WebAPI.Modules;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,7 +32,8 @@ builder.Services.AddDbContext<AppDbContext>(x =>
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped(typeof(IService<>), typeof(Service<>));
-
+ builder.Services.AddControllers().AddJsonOptions(x =>
+                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 //builder.Services.AddTransient<IUserRepository, UserRepository>();
 //builder.Services.AddTransient<IUserService, UserService>();
 

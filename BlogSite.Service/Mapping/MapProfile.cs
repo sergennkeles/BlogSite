@@ -15,7 +15,16 @@ namespace BlogSite.Service.Mapping
         public MapProfile()
         {
             CreateMap<User, UserInfoDto>().ReverseMap();
-            
+            CreateMap<User, UserDto>().ReverseMap();
+            CreateMap<Twitter, TwitterDto>().ReverseMap();
+            CreateMap<Post, PostDto>().ReverseMap();
+            CreateMap<Comment, CommentDto>().ReverseMap();
+            CreateMap<Instagram, InstagramDto>().ReverseMap();
+            CreateMap<Facebook, FacebookDto>().ReverseMap();
+            CreateMap<Github, GithubDto>().ReverseMap();
+      
+
+
         }
     }
 }
