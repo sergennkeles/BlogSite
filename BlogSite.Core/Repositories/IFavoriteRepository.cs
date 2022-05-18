@@ -9,5 +9,6 @@ namespace BlogSite.Core.Repositories
 {
     public interface IFavoriteRepository:IGenericRepository<Favorite>
     {
+        Task<bool> IsDeletedAsync(Favorite favorite);
     }
 }

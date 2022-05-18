@@ -4,15 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BlogSite.Core.Entities
+namespace BlogSite.Core.Dtos
 {
-    public class Favorite : BaseEntity
+    public class IsDeletedFavoriteDto
     {
+        public int Id { get; set; }
         public int UserId { get; set; }
         public int PostId { get; set; }
         public bool IsDeleted { get; set; }
-        public  virtual User User { get; set; }
-        public virtual List<Post> Posts { get; set; }
     }
-   
 }

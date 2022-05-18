@@ -9,15 +9,8 @@ using System.Threading.Tasks;
 
 namespace BlogSite.Repository.Entities.Configurations
 {
-    public class InstagramConfiguration : IEntityTypeConfiguration<Instagram>
+    public class InstagramConfiguration
     {
-        public void Configure(EntityTypeBuilder<Instagram> builder)
-        {
-            builder.HasKey(p => p.Id);
-            builder.Property(p => p.Id).UseIdentityColumn();
-            builder.Property(p => p.InstagramUrl).HasMaxLength(300);
-            builder.HasOne(p => p.User).WithOne(a => a.Instagram).HasForeignKey<Instagram>(p => p.UserId);
-            builder.ToTable("Instagrams");
-        }
+      
     }
 }

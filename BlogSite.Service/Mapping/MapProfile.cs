@@ -22,7 +22,10 @@ namespace BlogSite.Service.Mapping
             CreateMap<Instagram, InstagramDto>().ReverseMap();
             CreateMap<Facebook, FacebookDto>().ReverseMap();
             CreateMap<Github, GithubDto>().ReverseMap();
-      
+            CreateMap<Favorite, FavoriteDto>().ReverseMap();
+            CreateMap<Favorite, IsDeletedFavoriteDto>().ReverseMap();
+
+
 
 
         }

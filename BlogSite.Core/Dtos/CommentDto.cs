@@ -8,7 +8,8 @@ namespace BlogSite.Core.Dtos
 {
     public class CommentDto:BaseDto
     {
-        public PostDto Post { get; set; }
+        public int UserId { get; set; }
+        public int PostId { get; set; }
         public string CommentContent { get; set; }
     }
 }

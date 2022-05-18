@@ -8,6 +8,7 @@ namespace BlogSite.Core.Dtos
 {
     public class FacebookDto:BaseDto
     {
+        public int UserId { get; set; }
         public string FacebookUrl { get; set; }
     }
 }

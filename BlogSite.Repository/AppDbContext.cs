@@ -26,6 +26,7 @@ namespace BlogSite.Repository
         public DbSet<User> Users { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Comment> Comments { get; set; }
+           
         public DbSet<Github> Githubs { get; set; }
         public DbSet<Twitter> Twitters { get; set; }
         public DbSet<Facebook> Facebooks { get; set; }

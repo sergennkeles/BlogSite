@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlogSite.Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20220510154126_initial")]
+    [Migration("20220518061046_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,9 +33,7 @@ namespace BlogSite.Repository.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("CommentContent")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
@@ -51,9 +49,9 @@ namespace BlogSite.Repository.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("PostId");
 
-                    b.ToTable("Comments", (string)null);
+                    b.ToTable("Comments");
 
                     b.HasData(
                         new
@@ -78,8 +76,7 @@ namespace BlogSite.Repository.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("FacebookUrl")
-                        .HasMaxLength(300)
-                        .HasColumnType("nvarchar(300)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
@@ -92,7 +89,7 @@ namespace BlogSite.Repository.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("Facebooks", (string)null);
+                    b.ToTable("Facebooks");
 
                     b.HasData(
                         new
@@ -116,9 +113,7 @@ namespace BlogSite.Repository.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
+                        .HasColumnType("bit");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
@@ -130,7 +125,7 @@ namespace BlogSite.Repository.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Favorites", (string)null);
+                    b.ToTable("Favorites");
 
                     b.HasData(
                         new
@@ -154,8 +149,7 @@ namespace BlogSite.Repository.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("GithubUrl")
-                        .HasMaxLength(300)
-                        .HasColumnType("nvarchar(300)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
@@ -168,7 +162,7 @@ namespace BlogSite.Repository.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("Githubs", (string)null);
+                    b.ToTable("Githubs");
 
                     b.HasData(
                         new
@@ -192,8 +186,7 @@ namespace BlogSite.Repository.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("InstagramUrl")
-                        .HasMaxLength(300)
-                        .HasColumnType("nvarchar(300)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
@@ -206,7 +199,7 @@ namespace BlogSite.Repository.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("Instagrams", (string)null);
+                    b.ToTable("Instagrams");
 
                     b.HasData(
                         new
@@ -227,16 +220,13 @@ namespace BlogSite.Repository.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Content")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(300)
-                        .HasColumnType("nvarchar(300)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
@@ -248,7 +238,7 @@ namespace BlogSite.Repository.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Posts", (string)null);
+                    b.ToTable("Posts");
 
                     b.HasData(
                         new
@@ -281,8 +271,7 @@ namespace BlogSite.Repository.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("TwitterUrl")
-                        .HasMaxLength(300)
-                        .HasColumnType("nvarchar(300)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
@@ -295,7 +284,7 @@ namespace BlogSite.Repository.Migrations
                     b.HasIndex("UserId")
                         .IsUnique();
 
-                    b.ToTable("Twitters", (string)null);
+                    b.ToTable("Twitters");
 
                     b.HasData(
                         new
@@ -315,40 +304,36 @@ namespace BlogSite.Repository.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<int>("CommentId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("UpdatedDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
+                            CommentId = 0,
                             CreatedDate = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Email = "sergen@sergenkeles.com",
                             FirstName = "Sergen",
@@ -357,15 +342,30 @@ namespace BlogSite.Repository.Migrations
                         });
                 });
 
+            modelBuilder.Entity("CommentUser", b =>
+                {
+                    b.Property<int>("CommentsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UsersId")
+                        .HasColumnType("int");
+
+                    b.HasKey("CommentsId", "UsersId");
+
+                    b.HasIndex("UsersId");
+
+                    b.ToTable("CommentUser");
+                });
+
             modelBuilder.Entity("BlogSite.Core.Entities.Comment", b =>
                 {
-                    b.HasOne("BlogSite.Core.Entities.User", "User")
+                    b.HasOne("BlogSite.Core.Entities.Post", "Post")
                         .WithMany("Comments")
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("PostId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("User");
+                    b.Navigation("Post");
                 });
 
             modelBuilder.Entity("BlogSite.Core.Entities.Facebook", b =>
@@ -383,9 +383,7 @@ namespace BlogSite.Repository.Migrations
                 {
                     b.HasOne("BlogSite.Core.Entities.User", "User")
                         .WithMany("Favorites")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .HasConstraintName("users_favorites_fk");
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
@@ -434,10 +432,28 @@ namespace BlogSite.Repository.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("BlogSite.Core.Entities.User", b =>
+            modelBuilder.Entity("CommentUser", b =>
+                {
+                    b.HasOne("BlogSite.Core.Entities.Comment", null)
+                        .WithMany()
+                        .HasForeignKey("CommentsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BlogSite.Core.Entities.User", null)
+                        .WithMany()
+                        .HasForeignKey("UsersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("BlogSite.Core.Entities.Post", b =>
                 {
                     b.Navigation("Comments");
+                });
 
+            modelBuilder.Entity("BlogSite.Core.Entities.User", b =>
+                {
                     b.Navigation("Facebook");
 
                     b.Navigation("Favorites");

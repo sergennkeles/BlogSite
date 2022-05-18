@@ -14,5 +14,12 @@ namespace BlogSite.Repository.Repositories
         public FavoriteRepository(AppDbContext context) : base(context)
         {
         }
+
+        public async Task<bool> IsDeletedAsync(Favorite favorite)
+        {
+             var result=  await _context.Favorites
+                .Select(x => x.Id == favorite.Id).FirstOrDefaultAsync();
+            return result;
+        }
     }
 }

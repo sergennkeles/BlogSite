@@ -9,11 +9,12 @@ namespace BlogSite.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class InstagramsController : ControllerBase
+    public class FavoritesController : ControllerBase
     {
-        private readonly IInstagramService _service;
+
+        private readonly IFavoriteService _service;
         private readonly IMapper _mapper;
-        public InstagramsController(IInstagramService service, IMapper mapper)
+        public FavoritesController(IFavoriteService service, IMapper mapper)
         {
             _service = service;
             _mapper = mapper;
@@ -24,30 +25,31 @@ namespace BlogSite.WebAPI.Controllers
         public IActionResult GetAll()
         {
             var dataList = _service.GetAll();
-            return Ok(_mapper.Map<IEnumerable<InstagramDto>>(dataList));
+            return Ok(_mapper.Map<IEnumerable<Favorite>>(dataList));
         }
 
         [HttpPost]
-        public async Task<IActionResult> Add(InstagramDto dto)
+        public async Task<IActionResult> Add(FavoriteDto dto)
         {
-            var data = _mapper.Map<Instagram>(dto);
+            var data = _mapper.Map<Favorite>(dto);
             await _service.AddAsync(data);
             return Ok();
         }
 
         [HttpPut]
-        public IActionResult Update(InstagramDto dto)
+        public IActionResult Update(FavoriteDto dto)
         {
-            var data = _mapper.Map<Instagram>(dto);
+            var data = _mapper.Map<Favorite>(dto);
             _service.Update(data);
             return Ok();
         }
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        
+        [HttpPatch]
+        public IActionResult IsDeleted(IsDeletedFavoriteDto dto)
         {
-            var deletedData = await _service.GetByIdAsync(id);
-            _service.Delete(deletedData);
+
+            var data = _mapper.Map<Favorite>(dto);
+            _service.Update(data);
             return Ok();
         }
     }

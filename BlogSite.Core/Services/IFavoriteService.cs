@@ -9,5 +9,6 @@ namespace BlogSite.Core.Services
 {
     public interface IFavoriteService:IService<Favorite>
     {
+   
     }
 }

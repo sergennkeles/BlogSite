@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BlogSite.Core.Dtos
 {
-    public class GithubDto:BaseDto
+    public class FavoriteDto:BaseDto
     {
         public int UserId { get; set; }
-        public string GithubUrl { get; set; }
+        public int PostId { get; set; }
     }
 }

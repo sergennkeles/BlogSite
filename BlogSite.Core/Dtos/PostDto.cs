@@ -8,6 +8,7 @@ namespace BlogSite.Core.Dtos
 {
     public class PostDto:BaseDto
     {
+        public int UserId { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
     }

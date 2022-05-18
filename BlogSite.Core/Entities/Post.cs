@@ -13,8 +13,8 @@ namespace BlogSite.Core.Entities
         public string Content { get; set; }
 
         public virtual User User { get; set; }
-
-       // public virtual ICollection<Favorite> Favorites { get; set; }
+        public virtual IEnumerable<Comment> Comments { get; set; }
+        // public virtual ICollection<Favorite> Favorites { get; set; }
 
     }
 }

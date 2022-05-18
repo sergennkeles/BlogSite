@@ -12,8 +12,12 @@ namespace BlogSite.Service.Repositories
 {
     public class FavoriteService : Service<Favorite>, IFavoriteService
     {
-        public FavoriteService(IUnitOfWork unitOfWork, IGenericRepository<Favorite> genericRepository) : base(unitOfWork, genericRepository)
+
+        public FavoriteService(IUnitOfWork unitOfWork, IGenericRepository<Favorite> genericRepository, IFavoriteRepository favoriteRepository) : base(unitOfWork, genericRepository)
         {
+         
         }
+
+        
     }
 }
